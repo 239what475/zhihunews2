@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="textcolor">#000000</color>
+    <color name="background">#F0FFFF</color>
+    <color name="text2color">#D3D3D3</color>
+    <color name="progressBar">#2f92b6</color>
+    <color name="webTitleColor">#F0FFFF</color>
+    <color name="toolbarBackground">#F0FFFF</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>

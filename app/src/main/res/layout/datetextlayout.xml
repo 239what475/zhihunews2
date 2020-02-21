@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/textlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/datetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/textlayout"
+            app:layout_constraintStart_toStartOf="@+id/textlayout"
+            app:layout_constraintTop_toTopOf="@+id/textlayout" />
+
+        <View
+            android:layout_width="500dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="10dp"
+            android:background="#CCCCCC"
+            app:layout_constraintBottom_toBottomOf="@+id/textlayout"
+            app:layout_constraintStart_toEndOf="@+id/datetext"
+            app:layout_constraintTop_toTopOf="@+id/textlayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

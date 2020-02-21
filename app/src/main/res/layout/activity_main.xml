@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.ZhiHuNewsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="2dp"
+        android:theme="@style/OverflowMenuStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/insideLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ininsidelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/insideLayout"
+                app:layout_constraintLeft_toLeftOf="@id/insideLayout"
+                app:layout_constraintTop_toTopOf="@id/insideLayout">
+
+                <TextView
+                    android:id="@+id/daytext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor"
+                    app:layout_constraintLeft_toLeftOf="@id/ininsidelayout"
+                    app:layout_constraintRight_toRightOf="@id/ininsidelayout"
+                    app:layout_constraintTop_toTopOf="@id/ininsidelayout" />
+
+                <TextView
+                    android:id="@+id/monthtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor"
+                    app:layout_constraintLeft_toLeftOf="@id/ininsidelayout"
+                    app:layout_constraintRight_toRightOf="@id/ininsidelayout"
+                    app:layout_constraintTop_toBottomOf="@id/daytext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#000000"
+                app:layout_constraintBottom_toBottomOf="@id/insideLayout"
+                app:layout_constraintLeft_toRightOf="@id/ininsidelayout"
+                app:layout_constraintTop_toTopOf="@id/insideLayout" />
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="5dp"
+                android:textColor="@color/textcolor"
+                app:layout_constraintBottom_toBottomOf="@id/insideLayout"
+                app:layout_constraintLeft_toRightOf="@id/line"
+                app:layout_constraintTop_toTopOf="@id/insideLayout"
+                tools:ignore="RtlSymmetry" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
