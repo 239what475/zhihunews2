@@ -1,6 +1,5 @@
 package com.example.zhihunews.model
 
-import com.example.zhihunews.service.Story
 import com.example.zhihunews.service.TopStory
 
 fun getBannerPictures(list:MutableList<TopStory>)=

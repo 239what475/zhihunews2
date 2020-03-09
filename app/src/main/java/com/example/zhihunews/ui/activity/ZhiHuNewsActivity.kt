@@ -39,6 +39,7 @@ class ZhiHuNewsActivity :AppCompatActivity(), ZhiHuNewsView {
     override fun onError(message: String?) {
         myToasty("失败")
         refreshLayout.isRefreshing = false
+
     }
 
     override fun loadSuccess(list: ZhiHuNewsBean,counter:Int) {
@@ -66,7 +67,6 @@ class ZhiHuNewsActivity :AppCompatActivity(), ZhiHuNewsView {
     private lateinit var myRecyclerView: RecyclerView
     private lateinit var refreshLayout: SwipeRefreshLayout
     private lateinit var  manager:LinearLayoutManager
-    private var currentPosition = 0
 
     private val adapter by lazy { NewsListAdapter() }
     private val presenter by lazy { ZhiHuNewsPresenterImpl(this) }

@@ -19,22 +19,23 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.NewsListHolder>() {
         const val ITEM_TYPE_CARD = 2
 //        const val PROGRESS_BAR = 3
     }
-    private var listener:((urlList:MutableList<String>,current:Int)-> Unit)? = null
+
+    private var listener: ((urlList: MutableList<String>, current: Int) -> Unit)? = null
     private val newsPictures by lazy { mutableListOf<TopStory>() }
     private val newsCards by lazy { mutableListOf<Story>() }
     private val newsDate by lazy { mutableListOf<String>() }
-     val newsUrl by lazy { mutableListOf<String>() }
+    val newsUrl by lazy { mutableListOf<String>() }
     val emptyCard = Story("", "", 0, "", listOf(""), "", 0, "")
     var totalDays = 0
     var todayNewsSize = 0
     var yesDayNewsSize = 0
 
-    fun setCardOnClickListener(listener:(urlList:MutableList<String>,current:Int)-> Unit){
+    fun setCardOnClickListener(listener: (urlList: MutableList<String>, current: Int) -> Unit) {
         this.listener = listener
     }
 
-    fun loadData(newsData: ZhiHuNewsBean,counter:Int) {
-        if (counter == 1){
+    fun loadData(newsData: ZhiHuNewsBean, counter: Int) {
+        if (counter == 1) {
             totalDays = 1
             todayNewsSize = newsData.stories.size
             this.newsCards.clear()
@@ -46,31 +47,31 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.NewsListHolder>() {
         this.newsCards.addAll(newsData.stories)
         this.newsDate.let {
             it.add(newsData.date)
-            for (news in newsData.stories){
+            for (news in newsData.stories) {
                 it.add("")
                 newsUrl.add(news.url)
             }
         }
-        if (counter == 2){
+        if (counter == 2) {
             totalDays++
             yesDayNewsSize = newsData.stories.size
             notifyDataSetChanged()
         }
     }
 
-    fun loadMoreData(newsData: ZhiHuNewsBean,counter: Int) {
+    fun loadMoreData(newsData: ZhiHuNewsBean, counter: Int) {
         totalDays++
         println(totalDays)
         this.newsCards.add(emptyCard)
         this.newsCards.addAll(newsData.stories)
         this.newsDate.let {
             it.add(newsData.date)
-            for (news in newsData.stories){
+            for (news in newsData.stories) {
                 it.add("")
                 newsUrl.add(news.url)
             }
         }
-        if (counter %5 ==0){
+        if (counter % 5 == 0) {
             notifyDataSetChanged()
         }
     }
@@ -85,9 +86,9 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.NewsListHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) return ITEM_TYPE_IMAGE
-        if (newsCards.size == 0){
+        if (newsCards.size == 0) {
             return ITEM_TYPE_CARD
-        }else{
+        } else {
             if (newsCards[position].id == 0) {
                 println("$position + date")
                 return ITEM_TYPE_DATETEXT
@@ -126,10 +127,13 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.NewsListHolder>() {
                     val itemView = holder.itemView as NewsCard
                     itemView.setData(newsCards, position)
                     itemView.setOnClickListener {
-                        if (position<=todayNewsSize)
-                            listener?.invoke(newsUrl,position-1)
-                        if (position>todayNewsSize)
-                            listener?.invoke(newsUrl,position-(position-todayNewsSize-1)/(yesDayNewsSize+1)-2)
+                        if (position <= todayNewsSize)
+                            listener?.invoke(newsUrl, position - 1)
+                        if (position > todayNewsSize)
+                            listener?.invoke(
+                                newsUrl,
+                                position - (position - todayNewsSize - 1) / (yesDayNewsSize + 1) - 2
+                            )
 
                     }
                 }

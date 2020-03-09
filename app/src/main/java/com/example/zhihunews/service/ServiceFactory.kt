@@ -1,5 +1,6 @@
 package com.example.zhihunews.service
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,5 +19,8 @@ object ServiceFactory {
         .client(client)
         //设置数据解析器
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
+
+    inline operator fun <reified T> invoke(): T = retrofit.create(T::class.java)
 }
